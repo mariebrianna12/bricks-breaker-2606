@@ -20,7 +20,6 @@ void Game::Reset()
 	ResetBall();
 
 	// TODO #2 - Add this brick and 4 more bricks to the vector
-	
 	for (int i = 0; i < 5; ++i)
 	{
 	Box brick;
@@ -76,7 +75,11 @@ void Game::Render() const
 	ball.Draw();
 
 	// TODO #3 - Update render to render all bricks
-	brick.Draw();
+
+	for (const Box& brick : bricks)
+	{
+		brick.Draw();
+	}
 
 	Console::Lock(false);
 }
