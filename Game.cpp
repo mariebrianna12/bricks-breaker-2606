@@ -23,12 +23,12 @@ void Game::Reset()
 	for (int i = 0; i < 5; ++i)
 	{
 	Box brick;
-	brick.width = (WINDOW_WIDTH / 5) * i;
+	brick.width = 10;
 	brick.height = 2;
-	brick.x_position = 0;
+	brick.x_position = (WINDOW_WIDTH / 5) * i;
 	brick.y_position = 5;
 	brick.doubleThick = true;
-	brick.color = ConsoleColor::DarkGreen;
+	brick.color = ConsoleColor::DarkCyan;
 
 	bricks.push_back(brick);
 	}
@@ -97,6 +97,10 @@ void Game::CheckCollision()
 			ball.y_velocity *= -1;
 
 			// TODO #5 - If the ball hits the same brick 3 times (color == black), remove it from the vector
+			if (brick.color == ConsoleColor::Black)
+			{
+				bricks.erase(bricks.begin() + brick_index);
+			}
 		}
 	}
 
