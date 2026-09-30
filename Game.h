@@ -9,6 +9,8 @@ class Game
 	Ball ball;
 	Box paddle;
 
+	bool isGameOver = false; // added variable to implement the lose condition -Brianna
+
 	// TODO #1 - Instead of storing 1 brick, store a vector of bricks (by value)
 	//OLD = Box brick;
 

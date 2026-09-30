@@ -84,6 +84,15 @@ void Game::Render() const
 		std::cout << "You win! Press 'R' to play again. " << std::endl;
 	}
 
+	if (isGameOver == true)
+	{
+		int middleX = WINDOW_WIDTH / 2 - 12;
+		int middleY = WINDOW_HEIGHT / 2;
+
+		Console::SetCursorPosition(middleX, middleY);
+		std::cout << "You lose. Press 'R' to play again. " << std::endl;
+	}
+
 	// TODO #3 - Update render to render all bricks
 
 	for (const Box& brick : bricks)
@@ -126,4 +135,13 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
+	if (ball.y_position >= WINDOW_HEIGHT)
+	{
+		ball.moving = false;
+		isGameOver = true;
+	}
+	else
+	{
+		isGameOver = false;
+	}
 }
